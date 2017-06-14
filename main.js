@@ -102,7 +102,6 @@ for (let c = 0; c < 9; c++) {
       column.push(puzzle[r][c]);
     }
     let newColumn = columnMissingOne(column);
-    // console.log(newColumn);
     for (let r = 0; r < 9; r++) {
       puzzle[r][c] = newColumn[r];
     }
