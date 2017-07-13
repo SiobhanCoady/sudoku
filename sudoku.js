@@ -4,10 +4,19 @@ let count;
 for (let r = 0; r < 9; r++) {
   puzzle[r] = [];
   for (let c = 0; c < 9; c++) {
-    puzzle[r][c]=0;
+    puzzle[r][c] = 0;
   }
 }
 
+let allRemainingOptions = [];
+
+for (let r = 0; r < 9; r++) {
+  allRemainingOptions[r] = [];
+  for (let c = 0; c < 9; c++) {
+    allRemainingOptions[r][c] = [];
+  }
+}
+// console.log(allRemainingOptions);
 // console.log(puzzle);
 
 puzzle[0][0] = 5;
@@ -56,6 +65,46 @@ puzzle[8][6] = 8;
 puzzle[8][8] = 6;
 
 console.log(puzzle);
+
+const remainingCellPossibilities = function(row, col) {
+  let possible = [];
+  let notPossible = [];
+  if (puzzle[row][col] === 0) {
+    for (let c = 0; c < 9; c++) {
+      if (puzzle[row][c] !== 0) {
+        notPossible.push(puzzle[row][c]);
+      }
+    }
+    for (let r = 0; r < 9; r++) {
+      if (puzzle[r][col] !== 0 && notPossible.indexOf(puzzle[r][col]) === -1) {
+        notPossible.push(puzzle[r][col]);
+      }
+    }
+    for (let i = 1; i <= 9; i++) {
+      if (!notPossible.includes(i)) {
+        possible.push(i);
+      }
+    }
+  } else {
+    possible = puzzle[row][col];
+  }
+  return possible;
+}
+
+// console.log(remainingCellPossibilities(0, 1));
+// console.log(remainingCellPossibilities(1, 2));
+
+const possibilities = function(puzzle) {
+  for (let r = 0; r < 9; r++) {
+    for (let c = 0; c < 9; c++) {
+      allRemainingOptions[r][c] = remainingCellPossibilities(r, c);
+    }
+  }
+  return allRemainingOptions;
+}
+
+console.log(possibilities(puzzle));
+// console.log(allRemainingOptions[0][1]);
 
 const rowMissingOne = function(rowArray) {
   let existingNumbers = [];
