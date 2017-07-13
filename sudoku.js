@@ -10,22 +10,50 @@ for (let r = 0; r < 9; r++) {
 
 // console.log(puzzle);
 
-puzzle[3][0] = 2;
-puzzle[3][1] = 1;
-puzzle[3][2] = 3;
-puzzle[3][3] = 6;
-puzzle[3][4] = 5;
-puzzle[3][6] = 4;
-puzzle[3][7] = 9;
-puzzle[3][8] = 8;
+puzzle[0][0] = 5;
+puzzle[0][2] = 4;
+puzzle[0][3] = 3;
+puzzle[0][6] = 1;
+puzzle[0][8] = 8;
 
-puzzle[0][2] = 9;
-puzzle[1][2] = 6;
-puzzle[2][2] = 4;
-puzzle[4][2] = 1;
-puzzle[5][2] = 5;
-puzzle[6][2] = 2;
-puzzle[8][2] = 7;
+puzzle[1][0] = 8;
+puzzle[1][1] = 1;
+puzzle[1][2] = 7;
+puzzle[1][3] = 4;
+puzzle[1][4] = 5;
+puzzle[1][6] = 6;
+puzzle[1][7] = 2;
+
+puzzle[2][4] = 8;
+puzzle[2][7] = 7;
+
+puzzle[3][4] = 6;
+puzzle[3][8] = 5;
+
+puzzle[4][1] = 2;
+puzzle[4][3] = 5;
+puzzle[4][5] = 7;
+puzzle[4][7] = 8;
+
+puzzle[5][0] = 7;
+puzzle[5][4] = 9;
+
+puzzle[6][1] = 4;
+puzzle[6][4] = 3;
+
+puzzle[7][1] = 8;
+puzzle[7][2] = 9;
+puzzle[7][4] = 1;
+puzzle[7][5] = 5;
+puzzle[7][6] = 3;
+puzzle[7][7] = 4;
+puzzle[7][8] = 7;
+
+puzzle[8][0] = 1;
+puzzle[8][2] = 3;
+puzzle[8][5] = 4;
+puzzle[8][6] = 8;
+puzzle[8][8] = 6;
 
 console.log(puzzle);
 
