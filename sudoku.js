@@ -205,7 +205,7 @@ const threeByThreeNotPossibilities = function(row, cell) {
   return notPossible;
 }
 
-console.log(threeByThreeNotPossibilities(0, 1));
+// console.log(threeByThreeNotPossibilities(0, 1));
 
 // Find all possible numbers for all cells in the puzzle
 const possibilities = function(puzzle) {
@@ -277,7 +277,7 @@ for (let r = 0; r < 9; r++) {
   }
 }
 
-console.log(puzzle);
+// console.log(puzzle);
 
 // Search for any column missing one number and fill it in
 for (let c = 0; c < 9; c++) {
@@ -299,4 +299,20 @@ for (let c = 0; c < 9; c++) {
   }
 }
 
-console.log(puzzle);
+// console.log(puzzle);
+
+const arraysOfOne = function(puzzle) {
+  let updatedPuzzle = puzzle;
+  for (let r = 0; r < 9; r++) {
+    for (let c = 0; c < 9; c++) {
+      if (Array.isArray(puzzle[r][c]) && puzzle[r][c].length === 1) {
+        updatedPuzzle[r][c] = puzzle[r][c][0];
+        console.log("MAKING ARRAY INTO INTEGER");
+      }
+    }
+  }
+  return updatedPuzzle;
+}
+
+console.log("GET RID OF ARRAYS OF ONE");
+console.log(arraysOfOne(possibilities(puzzle)));
