@@ -66,9 +66,11 @@ puzzle[8][8] = 6;
 
 console.log(puzzle);
 
+// Find all possible numbers for one cell
 const remainingCellPossibilities = function(row, col) {
   let possible = [];
   let notPossible = [];
+  let threeByThreeCantBe = [];
   if (puzzle[row][col] === 0) {
     for (let c = 0; c < 9; c++) {
       if (puzzle[row][c] !== 0) {
@@ -78,6 +80,13 @@ const remainingCellPossibilities = function(row, col) {
     for (let r = 0; r < 9; r++) {
       if (puzzle[r][col] !== 0 && notPossible.indexOf(puzzle[r][col]) === -1) {
         notPossible.push(puzzle[r][col]);
+      }
+    }
+    threeByThreeCantBe = threeByThreeNotPossibilities(row, col);
+    let arrLength = threeByThreeCantBe.length;
+    for (let j = 0; j < arrLength; j++) {
+      if (notPossible.indexOf(threeByThreeCantBe[j] === -1)) {
+        notPossible.push(threeByThreeCantBe[j]);
       }
     }
     for (let i = 1; i <= 9; i++) {
@@ -94,6 +103,30 @@ const remainingCellPossibilities = function(row, col) {
 // console.log(remainingCellPossibilities(0, 1));
 // console.log(remainingCellPossibilities(1, 2));
 
+const threeByThreeNotPossibilities = function(row, cell) {
+  // let possible = [];
+  let notPossible = [];
+  if (row >= 0 && row <= 2 && cell >= 0 && cell <= 2) {
+    for (let r = 0; r < 3; r++) {
+      for (let c = 0; c < 3; c++) {
+        if (puzzle[r][c] !== 0) {
+          notPossible.push(puzzle[r][c]);
+        }
+      }
+    }
+  }
+  // for (let i = 1; i <= 9; i++) {
+  //   if (!notPossible.includes(i)) {
+  //     possible.push(i);
+  //   }
+  // }
+  // return possible;
+  return notPossible;
+}
+
+console.log(threeByThreeNotPossibilities(0, 1));
+
+// Find all possible numbers for all cells in the puzzle
 const possibilities = function(puzzle) {
   for (let r = 0; r < 9; r++) {
     for (let c = 0; c < 9; c++) {
