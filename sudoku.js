@@ -8,14 +8,7 @@ for (let r = 0; r < 9; r++) {
   }
 }
 
-let allRemainingOptions = [];
 
-for (let r = 0; r < 9; r++) {
-  allRemainingOptions[r] = [];
-  for (let c = 0; c < 9; c++) {
-    allRemainingOptions[r][c] = [];
-  }
-}
 // console.log(allRemainingOptions);
 // console.log(puzzle);
 
@@ -147,6 +140,15 @@ const threeByThreeNotPossibilities = function(row, col) {
 
 // Find all possible numbers for all cells in the puzzle
 const possibilities = function(puzzle) {
+  let allRemainingOptions = [];
+
+  for (let r = 0; r < 9; r++) {
+    allRemainingOptions[r] = [];
+    for (let c = 0; c < 9; c++) {
+      allRemainingOptions[r][c] = [];
+    }
+  }
+
   for (let r = 0; r < 9; r++) {
     for (let c = 0; c < 9; c++) {
       allRemainingOptions[r][c] = remainingCellPossibilities(r, c);
@@ -239,13 +241,13 @@ for (let c = 0; c < 9; c++) {
 
 // console.log(puzzle);
 
-const arraysOfOne = function(puzzle) {
-  let updatedPuzzle = puzzle;
+const arraysOfOne = function(currentPuzzle) {
+  let updatedPuzzle = currentPuzzle;
   for (let r = 0; r < 9; r++) {
     for (let c = 0; c < 9; c++) {
-      if (Array.isArray(puzzle[r][c]) && puzzle[r][c].length === 1) {
-        updatedPuzzle[r][c] = puzzle[r][c][0];
-        console.log("MAKING ARRAY INTO INTEGER");
+      if (Array.isArray(currentPuzzle[r][c]) && currentPuzzle[r][c].length === 1) {
+        updatedPuzzle[r][c] = currentPuzzle[r][c][0];
+        puzzle[r][c] = currentPuzzle[r][c];
       }
     }
   }
@@ -254,3 +256,9 @@ const arraysOfOne = function(puzzle) {
 
 console.log("GET RID OF ARRAYS OF ONE");
 console.log(arraysOfOne(possibilities(puzzle)));
+console.log(puzzle);
+console.log("POSSIBILITIES AGAIN");
+console.log(possibilities(puzzle));
+console.log("ARRAYS OF ONE AGAIN");
+console.log(arraysOfOne(possibilities(puzzle)));
+console.log(puzzle);
