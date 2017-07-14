@@ -1,5 +1,4 @@
 let puzzle = [];
-let count;
 
 for (let r = 0; r < 9; r++) {
   puzzle[r] = [];
@@ -8,9 +7,6 @@ for (let r = 0; r < 9; r++) {
   }
 }
 
-
-// console.log(allRemainingOptions);
-// console.log(puzzle);
 
 puzzle[0][0] = 5;
 puzzle[0][2] = 4;
@@ -93,8 +89,6 @@ const remainingCellPossibilities = function(row, col) {
   return possible;
 }
 
-// console.log(remainingCellPossibilities(0, 1));
-// console.log(remainingCellPossibilities(1, 2));
 
 const threeByThreeNotPossibilities = function(row, col) {
   let notPossible = [];
@@ -136,7 +130,6 @@ const threeByThreeNotPossibilities = function(row, col) {
   return notPossible;
 }
 
-// console.log(threeByThreeNotPossibilities(0, 1));
 
 // Find all possible numbers for all cells in the puzzle
 const possibilities = function(puzzle) {
@@ -157,89 +150,6 @@ const possibilities = function(puzzle) {
   return allRemainingOptions;
 }
 
-console.log(possibilities(puzzle));
-// console.log(allRemainingOptions[0][1]);
-
-const rowMissingOne = function(rowArray) {
-  let existingNumbers = [];
-  for (let number in rowArray) {
-    existingNumbers.push(rowArray[number]);
-  }
-  existingNumbers.sort().shift();
-  let missingNumber = 1;
-  for (let number of existingNumbers) {
-    if (number != missingNumber) {
-      break;
-    } else {
-      missingNumber++;
-    }
-  }
-  for (let number in rowArray) {
-    if (rowArray[number] === 0) {
-      rowArray[number] = missingNumber;
-    }
-  }
-  return rowArray;
-};
-
-const columnMissingOne = function(columnArray) {
-  let existingNumbers = [];
-  for (let number in columnArray) {
-    existingNumbers.push(columnArray[number]);
-  }
-  existingNumbers.sort().shift();
-  let missingNumber = 1;
-  for (let number of existingNumbers) {
-    if (number != missingNumber) {
-      break;
-    } else {
-      missingNumber++;
-    }
-  }
-  for (let number in columnArray) {
-    if (columnArray[number] === 0) {
-      columnArray[number] = missingNumber;
-    }
-  }
-  return columnArray;
-};
-
-// Search for any row missing one number and fill it in
-for (let r = 0; r < 9; r++) {
-  count = 0;
-  for (let c = 0; c < 9; c++) {
-    if (puzzle[r][c] === 0) {
-      count++;
-    }
-  }
-  if (count === 1) {
-    puzzle[r] = rowMissingOne(puzzle[r]);
-  }
-}
-
-// console.log(puzzle);
-
-// Search for any column missing one number and fill it in
-for (let c = 0; c < 9; c++) {
-  count = 0;
-  for (let r = 0; r < 9; r++) {
-    if (puzzle[r][c] === 0) {
-      count++;
-    }
-  }
-  if (count === 1) {
-    let column = [];
-    for (let r = 0; r < 9; r++) {
-      column.push(puzzle[r][c]);
-    }
-    let newColumn = columnMissingOne(column);
-    for (let r = 0; r < 9; r++) {
-      puzzle[r][c] = newColumn[r];
-    }
-  }
-}
-
-// console.log(puzzle);
 
 const arraysOfOne = function(currentPuzzle) {
   let updatedPuzzle = currentPuzzle;
@@ -251,14 +161,18 @@ const arraysOfOne = function(currentPuzzle) {
       }
     }
   }
-  return updatedPuzzle;
+  return possibilities(updatedPuzzle);
 }
 
-console.log("GET RID OF ARRAYS OF ONE");
-console.log(arraysOfOne(possibilities(puzzle)));
-console.log(puzzle);
-console.log("POSSIBILITIES AGAIN");
-console.log(possibilities(puzzle));
-console.log("ARRAYS OF ONE AGAIN");
-console.log(arraysOfOne(possibilities(puzzle)));
-console.log(puzzle);
+
+let counter = 1;
+for (let r = 0; r < 9; r++) {
+  for (let c = 0; c < 9; c++) {
+    if (puzzle[r][c] === 0) {
+      console.log(`COUNTER >>>>>>>>>>>> PASS ${counter}`);
+      console.log(arraysOfOne(possibilities(puzzle)));
+      // console.log(puzzle);
+      counter++;
+    }
+  }
+}
