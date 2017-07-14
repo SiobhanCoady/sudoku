@@ -104,23 +104,104 @@ const remainingCellPossibilities = function(row, col) {
 // console.log(remainingCellPossibilities(1, 2));
 
 const threeByThreeNotPossibilities = function(row, cell) {
-  // let possible = [];
   let notPossible = [];
   if (row >= 0 && row <= 2 && cell >= 0 && cell <= 2) {
-    for (let r = 0; r < 3; r++) {
-      for (let c = 0; c < 3; c++) {
+    for (let r = 0; r <= 2; r++) {
+      for (let c = 0; c <= 2; c++) {
+        if (puzzle[r][c] !== 0) {
+          notPossible.push(puzzle[r][c]);
+        }
+      }
+    }
+  } else if (row >= 0 && row <= 2 && cell >= 3 && cell <= 5) {
+    for (let r = 0; r <= 2; r++) {
+      for (let c = 3; c <= 5; c++) {
+        if (puzzle[r][c] !== 0) {
+          notPossible.push(puzzle[r][c]);
+        }
+      }
+    }
+  } else if (row >= 0 && row <= 2 && cell >= 6 && cell <= 8) {
+    for (let r = 0; r <= 2; r++) {
+      for (let c = 6; c <= 8; c++) {
+        if (puzzle[r][c] !== 0) {
+          notPossible.push(puzzle[r][c]);
+        }
+      }
+    }
+  } else if (row >= 3 && row <= 5 && cell >= 0 && cell <= 2) {
+    for (let r = 3; r <= 5; r++) {
+      for (let c = 0; c <= 2; c++) {
+        if (puzzle[r][c] !== 0) {
+          notPossible.push(puzzle[r][c]);
+        }
+      }
+    }
+  } else if (row >= 3 && row <= 5 && cell >= 3 && cell <= 5) {
+    for (let r = 3; r <= 5; r++) {
+      for (let c = 3; c <= 5; c++) {
+        if (puzzle[r][c] !== 0) {
+          notPossible.push(puzzle[r][c]);
+        }
+      }
+    }
+  } else if (row >= 3 && row <= 5 && cell >= 6 && cell <= 8) {
+    for (let r = 3; r <= 5; r++) {
+      for (let c = 6; c <= 8; c++) {
+        if (puzzle[r][c] !== 0) {
+          notPossible.push(puzzle[r][c]);
+        }
+      }
+    }
+  } else if (row >= 3 && row <= 5 && cell >= 0 && cell <= 2) {
+    for (let r = 3; r <= 5; r++) {
+      for (let c = 0; c <= 2; c++) {
+        if (puzzle[r][c] !== 0) {
+          notPossible.push(puzzle[r][c]);
+        }
+      }
+    }
+  } else if (row >= 3 && row <= 5 && cell >= 3 && cell <= 5) {
+    for (let r = 3; r <= 5; r++) {
+      for (let c = 3; c <= 5; c++) {
+        if (puzzle[r][c] !== 0) {
+          notPossible.push(puzzle[r][c]);
+        }
+      }
+    }
+  } else if (row >= 3 && row <= 5 && cell >= 6 && cell <= 8) {
+    for (let r = 3; r <= 5; r++) {
+      for (let c = 6; c <= 8; c++) {
+        if (puzzle[r][c] !== 0) {
+          notPossible.push(puzzle[r][c]);
+        }
+      }
+    }
+  } else if (row >= 6 && row <= 8 && cell >= 0 && cell <= 2) {
+    for (let r = 6; r <= 8; r++) {
+      for (let c = 0; c <= 2; c++) {
+        if (puzzle[r][c] !== 0) {
+          notPossible.push(puzzle[r][c]);
+        }
+      }
+    }
+  } else if (row >= 6 && row <= 8 && cell >= 3 && cell <= 5) {
+    for (let r = 6; r <= 8; r++) {
+      for (let c = 3; c <= 5; c++) {
+        if (puzzle[r][c] !== 0) {
+          notPossible.push(puzzle[r][c]);
+        }
+      }
+    }
+  } else if (row >= 6 && row <= 8 && cell >= 6 && cell <= 8) {
+    for (let r = 6; r <= 8; r++) {
+      for (let c = 6; c <= 8; c++) {
         if (puzzle[r][c] !== 0) {
           notPossible.push(puzzle[r][c]);
         }
       }
     }
   }
-  // for (let i = 1; i <= 9; i++) {
-  //   if (!notPossible.includes(i)) {
-  //     possible.push(i);
-  //   }
-  // }
-  // return possible;
   return notPossible;
 }
 
