@@ -7,7 +7,7 @@ for (let r = 0; r < 9; r++) {
   }
 }
 
-
+// EASY PUZZLE
 puzzle[0][0] = 5;
 puzzle[0][2] = 4;
 puzzle[0][3] = 3;
@@ -52,6 +52,41 @@ puzzle[8][2] = 3;
 puzzle[8][5] = 4;
 puzzle[8][6] = 8;
 puzzle[8][8] = 6;
+
+// // HARD PUZZLE
+// puzzle[0][0] = 8;
+// puzzle[0][1] = 9;
+// puzzle[0][8] = 1;
+//
+// puzzle[1][2] = 7;
+// puzzle[1][3] = 2;
+// puzzle[1][7] = 9;
+//
+// puzzle[2][1] = 1;
+// puzzle[2][4] = 9;
+// puzzle[2][5] = 3;
+//
+// puzzle[3][0] = 6;
+//
+// puzzle[4][2] = 5;
+// puzzle[4][3] = 4;
+// puzzle[4][4] = 2;
+// puzzle[4][5] = 1;
+// puzzle[4][6] = 3;
+//
+// puzzle[5][8] = 5;
+//
+// puzzle[6][3] = 8;
+// puzzle[6][4] = 7;
+// puzzle[6][7] = 4;
+//
+// puzzle[7][1] = 3;
+// puzzle[7][5] = 4;
+// puzzle[7][6] = 1;
+//
+// puzzle[8][0] = 4;
+// puzzle[8][7] = 2;
+// puzzle[8][8] = 9;
 
 console.log(puzzle);
 
@@ -176,3 +211,27 @@ for (let r = 0; r < 9; r++) {
     }
   }
 }
+
+// Place the number 1 in a row where it is only an option in one place
+let onlyOnce = [];
+for (let i = 1; i <= 9; i++) {
+  for (let c = 0; c < 9; c++) {
+    if (puzzle[1][c] === i) {
+      break;
+    }
+    if (c === 8) {
+      for (let col = 0; col < 9; col++) {
+        if (Array.isArray(possibilities(puzzle)[1][col]) && possibilities(puzzle)[1][col].includes(i)) {
+          console.log("I'M AN ARRAY");
+          console.log(possibilities(puzzle)[1][col]);
+          break;
+        }
+        if (col === 8) {
+          onlyOnce.push(i);
+        }
+      }
+    }
+  }
+}
+console.log("ONLY ONCE IN THE ROW");
+console.log(onlyOnce);
