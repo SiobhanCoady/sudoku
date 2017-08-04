@@ -117,4 +117,5 @@ for (let c = 0; c < 9; c++) {
 
 
 
+
 console.log(puzzle);
